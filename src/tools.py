@@ -211,6 +211,7 @@ class ObjectCounter:
         self.screen_width = width
 
     def track(self):
+        print(Text().color("green", "current count: {}".format(self.current_counter), True))
         while True:
             self.predictions = self.rfw.get_predictions()
             self.update_counter()
