@@ -202,6 +202,7 @@ class ObjectCounter:
         self.rfw = roboflow_oak_wrapper
         self.file = file
         self.counter = self.file.get_int()
+        self.current_counter = self.counter
         self.predictions = self.rfw.get_predictions()
         self.threshold_from = threshold_from
         self.threshold_to = threshold_to
@@ -216,7 +217,9 @@ class ObjectCounter:
             self.render_image()
             if cv2.waitKey(1) == ord("q"):
                 break
-            print(Text().color("blue", "current count: {}".format(self.counter), True))
+            if self.current_counter != self.counter:
+                print(Text().color("green", "current count: {}".format(self.counter), True))
+                self.current_counter = self.counter
 
     def update_counter(self):
         (rect, radiis) = self.get_rect_radiis()
