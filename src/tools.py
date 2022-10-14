@@ -44,25 +44,21 @@ class FileManager:
 
 class MemoryMapper:
 
-    def __init__(self):
-        # default values
-        self.equip_stat = 1         # EquipStat     (int)
-        self.lb_count = 0           # LbCount       (int)   Number of objects recognized
-        self.sb_count = 0           # SbCount       (int)
-        self.b_sum = 0              # BSum          (int)   Sum of LbCount and SbCount
-        self.alarm_large = 0        # AlarmLarge    (int)
-        self.alarm_small = 0        # AlarmSmall    (int)
-        self.alarm_sum = 0          # AlarmSum      (int)
-        self.reset = 0              # Reset         (int)   Reset command (1 to reset the LbCount counter)
-        self.bb_mass = 6535         # Bbmass        (int)
-        self.sb_mass = 6535         # Sbmass        (int)
-        self.mb_mass = 13070        # Mbmass        (int)   Sum of Bbmass and Sbmass
-        self.mass_set = 6535        # massSet       (int)
-        self.set_max_lb = 6535      # SetMaxLb      (int)
-        self.set_max_sb = 6535      # SetMaxSb      (int)
-        self.set_max_b_sum = 6535   # SetMaxBSum    (int)
-
-        self.index = Indexes()
+    equip_stat = 1  # EquipStat     (int)
+    lb_count = 0  # LbCount       (int)   Number of objects recognized
+    sb_count = 0  # SbCount       (int)
+    b_sum = 0  # BSum          (int)   Sum of LbCount and SbCount
+    alarm_large = 0  # AlarmLarge    (int)
+    alarm_small = 0  # AlarmSmall    (int)
+    alarm_sum = 0  # AlarmSum      (int)
+    reset = 0  # Reset         (int)   Reset command (1 to reset the LbCount counter)
+    bb_mass = 6535  # Bbmass        (int)
+    sb_mass = 6535  # Sbmass        (int)
+    mb_mass = 13070  # Mbmass        (int)   Sum of Bbmass and Sbmass
+    mass_set = 6535  # massSet       (int)
+    set_max_lb = 6535  # SetMaxLb      (int)
+    set_max_sb = 6535  # SetMaxSb      (int)
+    set_max_b_sum = 6535  # SetMaxBSum    (int)
 
     def get_mem_map(self):
         return (
@@ -118,7 +114,7 @@ class Slave:
         self.slave.add_block(self.block_name, cst.HOLDING_REGISTERS, 0, 21)
 
     def set_reset(self):
-        master_reset = self.slave.get_values(self.block_name, self.mem.index.Reset, 1)[0]
+        master_reset = self.slave.get_values(self.block_name, Indexes().Reset, 1)[0]
         if master_reset != self.mem.reset:
             self.mem.reset = master_reset
 
@@ -140,7 +136,7 @@ class Slave:
         print(Text().color("green", "Modbus Server Waiting for client queries...: \r\n"))
         while True:
             print(Text().color("blue", "MemMap: {} \r\n".format(str(self.mem.get_mem_map())), True))
-            self.slave.set_values(self.block_name, 0, self.mem.index.Reset)
+            self.slave.set_values(self.block_name, 0, Indexes().Reset)
             self.set_reset()
             if self.is_reset():
                 continue
