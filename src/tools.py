@@ -135,7 +135,10 @@ class Slave:
         self.slave.add_block(self.block_name, cst.HOLDING_REGISTERS, 0, 21)
 
     def set_reset(self):
+        alarm_sum = self.slave.get_values(self.block_name, Indexes().AlarmSum, 1)[0]
+        print(Text().color("red", "AlarmSum in master: {} \r\n".format(str(alarm_sum))))
         master_reset = self.slave.get_values(self.block_name, Indexes().Reset, 1)[0]
+        print(Text().color("red", "Reset in master: {} \r\n".format(str(alarm_sum))))
         if master_reset != self.mem.reset:
             self.mem.reset = master_reset
 
