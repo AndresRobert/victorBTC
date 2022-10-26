@@ -156,12 +156,13 @@ class Slave:
     def communicate(self):
         print(Text().color("green", "Modbus Server Waiting for client queries...: \r\n"))
         while True:
-            print(Text().color("blue", "MemMap: {} \r\n".format(str(self.mem.get_mem_map())), True))
-            self.slave.set_values(self.block_name, Indexes().EquipStat, self.mem.get_first_mem_map())
-            self.slave.set_values(self.block_name, Indexes().Bbmass, self.mem.get_second_mem_map())
+            print(Text().color("green", "MemMap: {} \r\n".format(str(self.mem.get_mem_map())), True))
+            # self.slave.set_values(self.block_name, Indexes().EquipStat, self.mem.get_first_mem_map())
+            # self.slave.set_values(self.block_name, Indexes().Bbmass, self.mem.get_second_mem_map())
             self.set_reset()
             if self.is_reset():
-                self.slave.set_values(self.block_name, Indexes().Reset, self.mem.reset)
+                print(Text().color("red", "Reset has been set...: \r\n"))
+                # self.slave.set_values(self.block_name, Indexes().Reset, self.mem.reset)
                 continue
             self.set_counter()
             time.sleep(self.refresh_rate)
