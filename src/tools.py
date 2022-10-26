@@ -43,7 +43,6 @@ class FileManager:
 
 
 class MemoryMapper:
-
     equip_stat = 1  # EquipStat     (int)
     lb_count = 0  # LbCount       (int)   Number of objects recognized
     sb_count = 0  # SbCount       (int)
@@ -70,6 +69,28 @@ class MemoryMapper:
             self.alarm_small,
             self.alarm_sum,
             self.reset,
+            self.bb_mass,
+            self.sb_mass,
+            self.mb_mass,
+            self.mass_set,
+            self.set_max_lb,
+            self.set_max_sb,
+            self.set_max_b_sum
+        )
+
+    def get_first_mem_map(self):
+        return (
+            self.equip_stat,
+            self.lb_count,
+            self.sb_count,
+            self.b_sum,
+            self.alarm_large,
+            self.alarm_small,
+            self.alarm_sum,
+        )
+
+    def get_second_mem_map(self):
+        return (
             self.bb_mass,
             self.sb_mass,
             self.mb_mass,
@@ -136,9 +157,11 @@ class Slave:
         print(Text().color("green", "Modbus Server Waiting for client queries...: \r\n"))
         while True:
             print(Text().color("blue", "MemMap: {} \r\n".format(str(self.mem.get_mem_map())), True))
-            self.slave.set_values(self.block_name, 0, Indexes().Reset)
+            self.slave.set_values(self.block_name, Indexes().EquipStat, self.mem.get_first_mem_map())
+            self.slave.set_values(self.block_name, Indexes().Bbmass, self.mem.get_second_mem_map())
             self.set_reset()
             if self.is_reset():
+                self.slave.set_values(self.block_name, Indexes().Reset, self.mem.reset)
                 continue
             self.set_counter()
             time.sleep(self.refresh_rate)
@@ -221,8 +244,8 @@ class ObjectCounter:
     def update_counter(self):
         (rect, radiis) = self.get_rect_radiis()
         tracker_count = self.tracker.update(rect, radiis)
+        self.counter = tracker_count
         if self.counter != tracker_count:
-            self.counter = tracker_count
             self.file.set_int(self.counter)
 
     def get_rect_radiis(self):
@@ -441,7 +464,7 @@ class Text:
         "bg_grey": '\33[100m'
     }
 
-    def color(self, color, message, add_time = False):
+    def color(self, color, message, add_time=False):
         if add_time:
             return "{}{}{}{}".format(self.colors[color], self.time(), message, self.reset)
         return "{}{}{}".format(self.colors[color], message, self.reset)
