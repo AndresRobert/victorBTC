@@ -7,14 +7,17 @@ pip install depthai
 pip install scipy
 pip install opencv-python
 ```
-Add your configuration and keys [here](src/config.py)
 
 # How To Use
-Run:
+Get latest changes:
 ```bash
-./start_counter.sh
+./pull.sh
 ```
-And then:
+Run ball tracker:
 ```bash
-./start_communicator.sh
+./track.sh
+```
+Run slave communicator:
+```bash
+./comm.sh
 ```
