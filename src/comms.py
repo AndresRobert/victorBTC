@@ -53,7 +53,7 @@ if __name__ == '__main__':
         slave_2.set_values(BLOCK, 5, [AlarmSmall])
         slave_2.set_values(BLOCK, 6, [AlarmSum])
         # slave_2.set_values(BLOCK, 7, [Reset])
-        slave_2.set_values(BLOCK, 8, [Bbmass])
+        # slave_2.set_values(BLOCK, 8, [Bbmass])
         slave_2.set_values(BLOCK, 9, [Sbmass])
         slave_2.set_values(BLOCK, 10, [Mbmass])
         slave_2.set_values(BLOCK, 11, [massSet])
@@ -79,13 +79,15 @@ if __name__ == '__main__':
         # AlarmSum = slave_2.get_values(BLOCK, 6, 1)[0]
         Reset = slave_2.get_values(BLOCK, 7, 1)[0]
         # Reset = file.fetchFromFile("reset") # for testing only
-        # Bbmass = slave_2.get_values(BLOCK, 8, 1)[0]
+        Bbmass = slave_2.get_values(BLOCK, 8, 1)[0]
         # Sbmass = slave_2.get_values(BLOCK, 9, 1)[0]
         # Mbmass = slave_2.get_values(BLOCK, 10, 1)[0]
         # massSet = slave_2.get_values(BLOCK, 11, 1)[0]
         # SetMaxLb = slave_2.get_values(BLOCK, 12, 1)[0]
         # SetMaxSb = slave_2.get_values(BLOCK, 13, 1)[0]
         # SetMaxBSum = slave_2.get_values(BLOCK, 14, 1)[0]
+        log.info("[RESET FROM MASTER] {}".format(str(Reset)))
+        log.info("[BBMASS FROM MASTER] {}".format(str(Bbmass)))
 
         if Reset == 1 and LbCount != 0:
             file.storeInFile("counter", 0)
