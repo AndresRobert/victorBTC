@@ -45,21 +45,21 @@ if __name__ == '__main__':
             log.success("[UPDATE] count has been updated")
 
         # Set Values
-        slave_2.set_values(BLOCK, 1, [EquipStat])
-        slave_2.set_values(BLOCK, 2, [LbCount])
-        slave_2.set_values(BLOCK, 3, [SbCount])
-        slave_2.set_values(BLOCK, 4, [BSum])
-        slave_2.set_values(BLOCK, 5, [AlarmLarge])
-        slave_2.set_values(BLOCK, 6, [AlarmSmall])
-        slave_2.set_values(BLOCK, 7, [AlarmSum])
-        # slave_2.set_values(BLOCK, 8, [Reset])
-        slave_2.set_values(BLOCK, 9, [Bbmass])
-        slave_2.set_values(BLOCK, 10, [Sbmass])
-        slave_2.set_values(BLOCK, 11, [Mbmass])
-        slave_2.set_values(BLOCK, 12, [massSet])
-        slave_2.set_values(BLOCK, 13, [SetMaxLb])
-        slave_2.set_values(BLOCK, 14, [SetMaxSb])
-        slave_2.set_values(BLOCK, 15, [SetMaxBSum])
+        slave_2.set_values(BLOCK, 0, [EquipStat])
+        slave_2.set_values(BLOCK, 1, [LbCount])
+        slave_2.set_values(BLOCK, 2, [SbCount])
+        slave_2.set_values(BLOCK, 3, [BSum])
+        slave_2.set_values(BLOCK, 4, [AlarmLarge])
+        slave_2.set_values(BLOCK, 5, [AlarmSmall])
+        slave_2.set_values(BLOCK, 6, [AlarmSum])
+        # slave_2.set_values(BLOCK, 7, [Reset])
+        # slave_2.set_values(BLOCK, 8, [Bbmass])
+        slave_2.set_values(BLOCK, 9, [Sbmass])
+        slave_2.set_values(BLOCK, 10, [Mbmass])
+        slave_2.set_values(BLOCK, 11, [massSet])
+        slave_2.set_values(BLOCK, 12, [SetMaxLb])
+        slave_2.set_values(BLOCK, 13, [SetMaxSb])
+        slave_2.set_values(BLOCK, 14, [SetMaxBSum])
 
         # Show Values
         MemMap = [
@@ -70,22 +70,22 @@ if __name__ == '__main__':
         log.info("[MEMMAP] {}".format(str(MemMap)))
 
         # Get Values
-        # EquipStat = slave_2.get_values(BLOCK, 1, 1)[0]
-        # LbCount = slave_2.get_values(BLOCK, 2, 1)[0]
-        # SbCount = slave_2.get_values(BLOCK, 3, 1)[0]
-        # BSum = slave_2.get_values(BLOCK, 4, 1)[0]
-        # AlarmLarge = slave_2.get_values(BLOCK, 5, 1)[0]
-        # AlarmSmall = slave_2.get_values(BLOCK, 6, 1)[0]
-        # AlarmSum = slave_2.get_values(BLOCK, 7, 1)[0]
-        Reset = slave_2.get_values(BLOCK, 8, 1)[0]
+        # EquipStat = slave_2.get_values(BLOCK, 0, 1)[0]
+        # LbCount = slave_2.get_values(BLOCK, 1, 1)[0]
+        # SbCount = slave_2.get_values(BLOCK, 2, 1)[0]
+        # BSum = slave_2.get_values(BLOCK, 3, 1)[0]
+        # AlarmLarge = slave_2.get_values(BLOCK, 4, 1)[0]
+        # AlarmSmall = slave_2.get_values(BLOCK, 5, 1)[0]
+        # AlarmSum = slave_2.get_values(BLOCK, 6, 1)[0]
+        Reset = slave_2.get_values(BLOCK, 7, 1)[0]
         # Reset = file.fetchFromFile("reset") # for testing only
-        # Bbmass = slave_2.get_values(BLOCK, 9, 1)[0]
-        # Sbmass = slave_2.get_values(BLOCK, 10, 1)[0]
-        # Mbmass = slave_2.get_values(BLOCK, 11, 1)[0]
-        # massSet = slave_2.get_values(BLOCK, 12, 1)[0]
-        # SetMaxLb = slave_2.get_values(BLOCK, 13, 1)[0]
-        # SetMaxSb = slave_2.get_values(BLOCK, 14, 1)[0]
-        # SetMaxBSum = slave_2.get_values(BLOCK, 15, 1)[0]
+        Bbmass = slave_2.get_values(BLOCK, 8, 1)[0]
+        # Sbmass = slave_2.get_values(BLOCK, 9, 1)[0]
+        # Mbmass = slave_2.get_values(BLOCK, 10, 1)[0]
+        # massSet = slave_2.get_values(BLOCK, 11, 1)[0]
+        # SetMaxLb = slave_2.get_values(BLOCK, 12, 1)[0]
+        # SetMaxSb = slave_2.get_values(BLOCK, 13, 1)[0]
+        # SetMaxBSum = slave_2.get_values(BLOCK, 14, 1)[0]
         log.info("[RESET FROM MASTER] {}".format(str(Reset)))
 
         if Reset == 1 and LbCount != 0:
