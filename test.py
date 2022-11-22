@@ -7,7 +7,7 @@ if __name__ == '__main__':
     # instantiating an object (rf) with the RoboflowOak module
     # API Key: https://docs.roboflow.com/rest-api#obtaining-your-api-key
     rf = RoboflowOak(model="molinobolas", confidence=0.05, overlap=0.5,
-                     version="1", api_key="9KAohILa0qgpHUs0vc41", rgb=True,
+                     version="2", api_key="9KAohILa0qgpHUs0vc41", rgb=True,
                      depth=True, device=None, blocking=True)
     # Running our model and displaying the video output with detections
     while True:
