@@ -2,7 +2,7 @@ from roboflowoak import RoboflowOak
 
 MODEL_ID = "molinobolas"
 OVERLAP = 0.2
-API_KEY = "9KAohILa0qgpHUs0vc41dg"
+API_KEY = "9KAohILa0qgpHUs0vc41"
 
 RESULT = 0
 FRAME = 1
