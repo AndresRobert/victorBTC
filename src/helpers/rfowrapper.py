@@ -1,8 +1,8 @@
 from roboflowoak import RoboflowOak
 
-MODEL_ID = "detector-de-bolas"
+MODEL_ID = "molinobolas"
 OVERLAP = 0.2
-API_KEY = "fkaFLk1d4dpuuKeSuGgx"
+API_KEY = "9KAohILa0qgpHUs0vc41dg"
 
 RESULT = 0
 FRAME = 1

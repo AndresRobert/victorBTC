@@ -52,7 +52,7 @@ if __name__ == '__main__':
         slave_2.set_values(BLOCK, 4, [AlarmLarge])
         slave_2.set_values(BLOCK, 5, [AlarmSmall])
         slave_2.set_values(BLOCK, 6, [AlarmSum])
-        # slave_2.set_values(BLOCK, 7, [Reset])
+        slave_2.set_values(BLOCK, 7, [Reset])
         slave_2.set_values(BLOCK, 8, [Bbmass])
         slave_2.set_values(BLOCK, 9, [Sbmass])
         slave_2.set_values(BLOCK, 10, [Mbmass])
