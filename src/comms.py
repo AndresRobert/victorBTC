@@ -11,7 +11,7 @@ BLOCK = "BlockName"
 
 if __name__ == '__main__':
 
-    log.success("[INITIAL] Slave 12")
+    log.success("[INITIAL] Slave " + str(SLAVE_NUMBER))
     modbusServ = modbus_tcp.TcpServer(PORT, IP, SLAVE_NUMBER)
     modbusServ.start()
     slave_1 = modbusServ.add_slave(SLAVE_NUMBER)
