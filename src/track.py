@@ -6,7 +6,7 @@ DATA = 0
 FRAME = 1
 COUNT = 2
 MIN_TRACK = 245
-MAX_TRACK = 500
+MAX_TRACK = 450
 
 if __name__ == '__main__':
 
@@ -48,7 +48,7 @@ if __name__ == '__main__':
             file.storeInFile("counter", current_count)
 
         image = predictions[FRAME]
-        cv2.rectangle(image, (0, MIN_TRACK), (600, MAX_TRACK), (0, 255, 0), 2)
+        cv2.rectangle(image, (0, MIN_TRACK), (640, MAX_TRACK), (0, 255, 0), 2)
         cv2.imshow("frame", image)
         if cv2.waitKey(1) == ord('q'):
             break
