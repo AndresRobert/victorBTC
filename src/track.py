@@ -6,7 +6,7 @@ DATA = 0
 FRAME = 1
 COUNT = 2
 MIN_TRACK = 245
-MAX_TRACK = 400
+MAX_TRACK = 415
 
 if __name__ == '__main__':
 
