@@ -33,6 +33,7 @@ if __name__ == '__main__':
         lrg_radius_list = []
         for raw_prediction in predictions[DATA]:
             box = raw_prediction.json()
+            log.error(box)
             if box["y"] < MIN_TRACK or box["y"] > MAX_TRACK:
                 continue
             if box["type"] == "lrg":

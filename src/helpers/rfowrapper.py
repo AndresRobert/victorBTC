@@ -27,5 +27,4 @@ class RFOWrapper:
     def getPredictions(self):
         detector = self.rfo.detect()
         predictions = detector[RESULT]["predictions"]
-        print(predictions.json())
         return predictions, detector[FRAME]
