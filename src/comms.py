@@ -45,8 +45,8 @@ if __name__ == '__main__':
             log.success("[UPDATE] small count has been updated")
         if LbCount != lrg_new_count:
             LbCount = lrg_new_count
-            BSum = SbCount + LbCount
             log.success("[UPDATE] large count has been updated")
+        BSum = SbCount + LbCount
 
         # Set Values
         slave_2.set_values(BLOCK, 0, [EquipStat])
