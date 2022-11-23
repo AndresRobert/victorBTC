@@ -19,8 +19,8 @@ if __name__ == '__main__':
     slave_2 = modbusServ.get_slave(SLAVE_NUMBER)
     
     EquipStat = 1
-    LbCount = file.fetchFromFile("counter")
-    SbCount = 0
+    LbCount = file.fetchFromFile("lrg_counter")
+    SbCount = file.fetchFromFile("sml_counter")
     BSum = SbCount + LbCount
     AlarmLarge = 0
     AlarmSmall = 0
@@ -38,11 +38,15 @@ if __name__ == '__main__':
     while True:
 
         # Check counter in file
-        new_count = file.fetchFromFile("counter")
-        if LbCount != new_count:
-            LbCount = new_count
+        sml_new_count = file.fetchFromFile("sml_counter")
+        lrg_new_count = file.fetchFromFile("lrg_counter")
+        if SbCount != sml_new_count:
+            SbCount = sml_new_count
+            log.success("[UPDATE] small count has been updated")
+        if LbCount != lrg_new_count:
+            LbCount = lrg_new_count
             BSum = SbCount + LbCount
-            log.success("[UPDATE] count has been updated")
+            log.success("[UPDATE] large count has been updated")
 
         # Set Values
         slave_2.set_values(BLOCK, 0, [EquipStat])
@@ -88,9 +92,11 @@ if __name__ == '__main__':
         # SetMaxBSum = slave_2.get_values(BLOCK, 14, 1)[0]
 
         if Reset == 1 and LbCount != 0:
-            file.storeInFile("counter", 0)
+            file.storeInFile("lrg_counter", 0)
             LbCount = 0
+            file.storeInFile("sml_counter", 0)
+            SbCount = 0
             BSum = SbCount + LbCount
-            log.warn("[UPDATE] count has been reset")
+            log.warn("[UPDATE] large and small counters have been reset")
 
         time.sleep(0.5)
