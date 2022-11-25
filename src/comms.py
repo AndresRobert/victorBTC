@@ -5,13 +5,13 @@ from storage import file
 
 PORT = 5020
 IP = '0.0.0.0'
-SLAVE_NUMBER = 12
+SLAVE_NUMBER = 13
 RESET_INDEX = 8  # this is not in use, only for informational purposes
 BLOCK = "BlockName"
 
 if __name__ == '__main__':
 
-    log.success("[INITIAL] Slave 12")
+    log.success("[INITIAL] Slave 13")
     modbusServ = modbus_tcp.TcpServer(PORT, IP, SLAVE_NUMBER)
     modbusServ.start()
     slave_1 = modbusServ.add_slave(SLAVE_NUMBER)
