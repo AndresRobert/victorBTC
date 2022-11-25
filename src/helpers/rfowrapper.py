@@ -11,7 +11,7 @@ DEPTH = 3
 
 class RFOWrapper:
 
-    def __init__(self, confidence=0.65, version="2"):
+    def __init__(self, confidence=0.68, version="2"):
         self.rfo = RoboflowOak(
             confidence=confidence,
             version=version,
