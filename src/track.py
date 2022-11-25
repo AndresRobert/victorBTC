@@ -26,7 +26,11 @@ if __name__ == '__main__':
     )
 
     while True:
-        predictions = rfo.getPredictions()
+        try:
+            predictions = rfo.getPredictions()
+        except RuntimeError as re:
+            log.error("Runtime Error: " + str(re))
+            continue
         sml_rectangle_list = []
         sml_radius_list = []
         lrg_rectangle_list = []
