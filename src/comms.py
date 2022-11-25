@@ -5,7 +5,7 @@ from storage import file
 
 PORT = 5020
 IP = '0.0.0.0'
-SLAVE_NUMBER = 13
+SLAVE_NUMBER = 12
 RESET_INDEX = 7
 BLOCK = "BlockName"
 
