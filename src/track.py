@@ -20,7 +20,11 @@ if __name__ == '__main__':
     )
 
     while True:
-        predictions = rfo.getPredictions()
+        try:
+            predictions = rfo.getPredictions()
+        except RuntimeError as re:
+            log.error("Runtime Error: " + str(re))
+            continue
         rectangle_list = []
         radius_list = []
         for raw_prediction in predictions[DATA]:
